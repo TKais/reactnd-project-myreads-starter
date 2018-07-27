@@ -12,6 +12,9 @@ class Library extends React.Component {
         <div className="list-books-content">
           <div>
             <Shelf shelfTitle="Currently Reading" />
+            <Shelf shelfTitle="Want to Read" />
+            <Shelf shelfTitle="Read" />
+            
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
