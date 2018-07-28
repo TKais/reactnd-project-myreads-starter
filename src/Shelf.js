@@ -1,7 +1,12 @@
 import React from 'react';
 import Book from './Book';
+import PropTypes from 'prop-types';
 
 class Shelf extends React.Component {
+  state = {
+    books: []
+  }
+
 	render() {
 		return (
       <div className="bookshelf">
