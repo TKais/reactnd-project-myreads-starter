@@ -6,17 +6,19 @@ import { update } from './BooksAPI';
 class Shelf extends React.Component {
 
   setCategory = (book, category) => {
-    // logic
+    update(book, category)
+      .then( (data) => {
+        this.props.changeShelf();
+      });
   }
 
 
 	render() {
     const updatedBooks = this.props.books.map( (book) => {
-      console.log(book);
       let shelfName = this.props.shelfTitle.toLowerCase().split(' ').join('');
       if(shelfName === book.shelf.toLowerCase()) {
         return (
-          <Book key={book.id} bookTitle={book.title} author={book.authors} bookImage={ book.imageLinks.thumbnail } changeShelf={this.setCategory} />
+          <Book key={book.id} bookTitle={book.title} id={book.id} author={book.authors} bookImage={ book.imageLinks.thumbnail } changeShelf={this.setCategory} books={this.props.books} />
         );
       }
     });
