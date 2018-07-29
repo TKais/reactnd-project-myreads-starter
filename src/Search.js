@@ -5,7 +5,6 @@ import Book from './Book';
 
 class Search extends React.Component {
   state = {
-    results : [],
     displayedResults : [],
     errorText: ''
   }
@@ -16,18 +15,15 @@ class Search extends React.Component {
 
     search(value)
       .then( (data) => {
-        this.setState({ results: data });
-        this.handleAPIResults();
+        this.handleAPIResults(data);
       });
   }
 
-  handleAPIResults = () => {
-    const results = this.state.results;
-
-    if(Array.isArray(results)) {
+  handleAPIResults = (data) => {
+    if(Array.isArray(data)) {
       this.clearErrorText();
-      this.createResultsToDisplay();
-    } else if (results && results.error === 'empty query') {
+      this.createResultsToDisplay(data);
+    } else if (data && data.error === 'empty query') {
       this.clearResults();
       this.setState({ errorText : 'No results match this query' });
     }
@@ -41,11 +37,11 @@ class Search extends React.Component {
     this.setState({ displayedResults : [] });
   }
 
-  createResultsToDisplay = () => {
-    const displayed = this.state.results.map( result => ( 
-      <Book key={result.id} bookTitle={result.title} id={result.id} author={result.authors} bookImage={ result.imageLinks.thumbnail } changeShelf={this.setCategory} books={this.props.books} shelf={result.shelf}  /> 
+  createResultsToDisplay = (data) => {
+    const displayed = data.map( result => (
+      <Book key={result.id} bookTitle={result.title} id={result.id} author={result.authors} bookImage={ result.imageLinks ? result.imageLinks.thumbnail : result.previewLink } changeShelf={this.setCategory} books={this.props.books} shelf={result.shelf}  /> 
     ));
-    
+
     this.setState({ displayedResults : displayed });
   }
 
