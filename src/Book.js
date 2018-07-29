@@ -16,7 +16,7 @@ class Book extends React.Component {
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookImage})` }}></div>
-            <Picker onCategoryChange={this.getBook} />
+            <Picker onCategoryChange={this.getBook} shelfCategory={this.props.shelf} />
           </div>
           <div className="book-title">{this.props.bookTitle}</div>
           <div className="book-authors">{this.props.author}</div>

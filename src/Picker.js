@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Picker extends React.Component {
+
   handleChange = (event) => {
     this.props.onCategoryChange(event.target.value);
   }
