@@ -12,7 +12,7 @@ class Library extends React.Component {
           <div>
             <Shelf shelfTitle="Currently Reading" books={this.props.allBooks} changeShelf={this.props.onShelfChange} />
             <Shelf shelfTitle="Want to Read" books={this.props.allBooks} changeShelf={this.props.onShelfChange} />
-            <Shelf shelfTitle="Read" books={this.props.allBooks} changeShelf={this.props.onShelfChange}  />
+            <Shelf shelfTitle="Read" books={this.props.allBooks} onShelfChange={this.props.onShelfChange}  />
           </div>
         </div>
         <div className="open-search">

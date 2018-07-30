@@ -12,10 +12,17 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-  	this.updateBooks();
+  	this.getAllBooks();
   }
 
-  updateBooks = () => {
+  updateBooks = (book, category) => {
+    BooksAPI.update(book, category)
+      .then( () => {
+        this.getAllBooks();
+      });
+  }
+
+  getAllBooks = () => {
     BooksAPI.getAll()
       .then((books) => {
         this.setState({ books });

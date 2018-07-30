@@ -5,10 +5,12 @@ import { update } from './BooksAPI';
 
 class Shelf extends React.Component {
 
-  setCategory = (book, category) => {
+  static setCategory = (book, category) => {
     update(book, category)
       .then( () => {
-        this.props.changeShelf();
+        console.log('THIS--->', this);
+        console.log('PROPS--->', this.props);
+        this.props.onShelfChange();
       });
   }
 
@@ -18,7 +20,7 @@ class Shelf extends React.Component {
       let shelfName = this.props.shelfTitle.toLowerCase().split(' ').join('');
       if(shelfName === book.shelf.toLowerCase()) {
         return (
-          <Book key={book.id} bookTitle={book.title} id={book.id} author={book.authors} bookImage={ book.imageLinks.thumbnail } onShelfChange={this.setCategory} books={this.props.books} shelf={book.shelf} />
+          <Book key={book.id} bookTitle={book.title} id={book.id} author={book.authors} bookImage={ book.imageLinks.thumbnail } onShelfChange={this.props.onShelfChange} books={this.props.books} shelf={book.shelf} />
         );
       }
     });
