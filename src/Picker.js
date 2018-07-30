@@ -2,7 +2,7 @@ import React from 'react';
 
 class Picker extends React.Component {
   state = {
-    selected : '' 
+    selected : 'none' 
   }
 
   handleChange = (event) => {
