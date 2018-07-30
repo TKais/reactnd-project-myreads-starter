@@ -10,8 +10,8 @@ class Library extends React.Component {
         <Title pageTitle="MyReads" />
         <div className="list-books-content">
           <div>
-            <Shelf shelfTitle="Currently Reading" books={this.props.allBooks} changeShelf={this.props.onShelfChange} />
-            <Shelf shelfTitle="Want to Read" books={this.props.allBooks} changeShelf={this.props.onShelfChange} />
+            <Shelf shelfTitle="Currently Reading" books={this.props.allBooks} onShelfChange={this.props.onShelfChange} />
+            <Shelf shelfTitle="Want to Read" books={this.props.allBooks} onShelfChange={this.props.onShelfChange} />
             <Shelf shelfTitle="Read" books={this.props.allBooks} onShelfChange={this.props.onShelfChange}  />
           </div>
         </div>
