@@ -7,7 +7,7 @@ class Book extends React.Component {
     const bookToChange = this.props.books.filter( (book) => {
       return this.props.id === book.id;
     });
-    this.props.changeShelf(bookToChange[0], value);
+    this.props.onShelfChange(bookToChange[0], value);
   }
 
   render() {

@@ -18,7 +18,7 @@ class Shelf extends React.Component {
       let shelfName = this.props.shelfTitle.toLowerCase().split(' ').join('');
       if(shelfName === book.shelf.toLowerCase()) {
         return (
-          <Book key={book.id} bookTitle={book.title} id={book.id} author={book.authors} bookImage={ book.imageLinks.thumbnail } changeShelf={this.setCategory} books={this.props.books} shelf={book.shelf} />
+          <Book key={book.id} bookTitle={book.title} id={book.id} author={book.authors} bookImage={ book.imageLinks.thumbnail } onShelfChange={this.setCategory} books={this.props.books} shelf={book.shelf} />
         );
       }
     });

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { search } from './BooksAPI';
+import { search, update } from './BooksAPI';
 import Book from './Book';
+import { getBook } from './utils/utils';
 
 class Search extends React.Component {
   state = {
@@ -11,7 +12,7 @@ class Search extends React.Component {
 
   handleChange = (event) => {
     const value = event.target.value;
-    if(!value) { this.clearResults(); }
+    if(value.trim() === '') { this.clearResults(); }
 
     search(value)
       .then( (data) => {
@@ -37,9 +38,19 @@ class Search extends React.Component {
     this.setState({ displayedResults : [] });
   }
 
+  setCategory = (book, category) => {
+    console.log(this);
+    console.log('BOOK-->>', book);
+    console.log('CATEGORY-->>', category);
+    update(book, category)
+      .then( () => {
+        this.props.onShelfChange();
+      });
+  }
+
   createResultsToDisplay = (data) => {
     const displayed = data.map( result => (
-      <Book key={result.id} bookTitle={result.title} id={result.id} author={result.authors} bookImage={ result.imageLinks ? result.imageLinks.thumbnail : result.previewLink } changeShelf={this.setCategory} books={this.props.books} shelf={result.shelf}  /> 
+      <Book key={result.id} bookTitle={result.title} id={result.id} author={result.authors} bookImage={ result.imageLinks ? result.imageLinks.thumbnail : result.previewLink } onShelfChange={this.setCategory} books={this.state.displayedResults} shelf={result.shelf}   /> 
     ));
 
     this.setState({ displayedResults : displayed });
