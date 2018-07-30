@@ -1,19 +1,8 @@
 import React from 'react';
 import Book from './Book';
 import PropTypes from 'prop-types';
-import { update } from './BooksAPI';
 
 class Shelf extends React.Component {
-
-  static setCategory = (book, category) => {
-    update(book, category)
-      .then( () => {
-        console.log('THIS--->', this);
-        console.log('PROPS--->', this.props);
-        this.props.onShelfChange();
-      });
-  }
-
 
 	render() {
     const updatedBooks = this.props.books.map( (book) => {
