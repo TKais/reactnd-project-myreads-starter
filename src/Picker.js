@@ -21,9 +21,9 @@ class Picker extends React.Component {
     }
   }
 
-	render() {
-		return (
-			<div className="book-shelf-changer">
+  render() {
+    return (
+      <div className="book-shelf-changer">
         <select onChange={this.handleChange} value={this.state.selected}>
           <option value="move" disabled>Move to...</option>
           <option value="currentlyReading">Currently Reading</option>
@@ -32,8 +32,8 @@ class Picker extends React.Component {
           <option value="none">None</option>
         </select>
       </div>
-		);
-	}
+    );
+  }
 }
 
 export default Picker;
