@@ -8,11 +8,11 @@ import Search from './Search';
 
 class BooksApp extends React.Component {
   state = {
-  	books: []
+    books: []
   }
 
   componentDidMount() {
-  	this.getAllBooks();
+    this.getAllBooks();
   }
 
   updateBooks = (book, category) => {
@@ -33,7 +33,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path="/" render={ () => (
-        	<Library allBooks={ this.state.books } onShelfChange={this.updateBooks}/>
+          <Library allBooks={ this.state.books } onShelfChange={this.updateBooks}/>
         )} />
         <Route path="/search" render={ () => (
           <Search allBooks={ this.state.books } onShelfChange={this.updateBooks}/>
