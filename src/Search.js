@@ -2,12 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { search } from './BooksAPI';
 import Book from './Book';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
   state = {
     displayedResults : [],
     errorText: ''
   }
+
+  static propTypes = {
+    allBooks: PropTypes.array.isRequired,
+    onShelfChange: PropTypes.func.isRequired,
+  };
 
   handleChange = (event) => {
     const value = event.target.value;

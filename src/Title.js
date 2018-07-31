@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Title(props) {
 	return (
@@ -7,5 +8,9 @@ function Title(props) {
     </div>
 	);
 }
+
+Title.propTypes = {
+  pageTitle: PropTypes.string.isRequired,
+};
 
 export default Title;

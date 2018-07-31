@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Shelf from './Shelf';
 import Title from './Title';
+import PropTypes from 'prop-types';
 
 function Library(props) {
 	return (
@@ -20,5 +21,10 @@ function Library(props) {
     </div>
   );
 }
+
+Library.propTypes = {
+  allBooks: PropTypes.array.isRequired,
+  onShelfChange: PropTypes.func.isRequired,
+};
 
 export default Library;

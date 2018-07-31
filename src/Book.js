@@ -1,7 +1,17 @@
 import React from 'react';
 import Picker from './Picker';
+import PropTypes from 'prop-types';
 
 class Book extends React.Component {
+  static propTypes = {
+    bookTitle: PropTypes.string.isRequired,
+    books: PropTypes.array.isRequired,
+    onShelfChange: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    author: PropTypes.any,
+    bookImage: PropTypes.string,
+    shelf: PropTypes.string,
+  };
 
   getBook = (value) => {
     const bookToChange = this.props.books.filter( (book) => {

@@ -1,9 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Picker extends React.Component {
   state = {
     selected : 'none' 
   }
+
+  static propTypes = {
+    shelfCategory: PropTypes.string,
+    onCategoryChange: PropTypes.func.isRequired,
+  };
 
   handleChange = (event) => {
     this.props.onCategoryChange(event.target.value);
